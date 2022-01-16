@@ -252,11 +252,6 @@ input[type="text"]:focus, input[type="file"]:focus, input[type="email"]:focus{
   .nav-bar__item__link:after{
     bottom: -10px;
   }
-
-  .nav-bar__item{
-    margin-top: 50px;
-    margin-right: 0;
-  }
   
   .nav-bar__item__link{
     color: black;
