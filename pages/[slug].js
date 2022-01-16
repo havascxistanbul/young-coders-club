@@ -7,6 +7,7 @@ import Faq from '../components/Faq';
 import { createClient } from 'contentful'
 import Head from 'next/head';
 
+
 const client = createClient({
   space: process.env.CF_SPACE_ID,
   accessToken: process.env.CF_ACCESS_TOKEN,
