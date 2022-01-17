@@ -26,6 +26,7 @@ const HeroSwiper = (props) => {
         }}
         loop={true}
         wrapperTag='ul'
+        autoplay
       >
         {images.map((image) => (
           <SwiperSlide tag='li' key={nanoid()}> <Image src={`https:${image.url}`} priority layout='responsive' width={1200} height={500} alt={image.fileName} /></SwiperSlide>
