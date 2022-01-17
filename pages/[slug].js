@@ -56,7 +56,7 @@ export async function getStaticProps({ params }) {
 
 
 export default function Page(props) {
-  // console.log(...props.content.components)
+
   return (
     <>
       <Head>

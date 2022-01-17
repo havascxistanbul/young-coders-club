@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { useForm } from "react-hook-form";
 import axios from 'axios';
 
 const ApplyForm = () => {
-  const { reset } = useForm();
+  // const [name, setName] = useState('');
+  // const [surname, setSurname] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [github, setGithub] = useState('');
+  // const [cv, setCv] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const resetForm = () => {
+    document.getElementById('form').reset();
+  }
 
   return (
     <section className="lg:m-20 m-8">
@@ -26,15 +32,19 @@ const ApplyForm = () => {
         };
         await axios.post('/api/uploads', formData, config).then(
           (res) => {
-            alert('Form submitted')
-            setName
+            alert('Form submitted');
+            // setName('');
+            // setSurname('');
+            // setEmail('');
+            // setGithub('');
+            // setCv('');
+            resetForm();
           }
         ).catch(
           (e) => console.log(e)
         );
 
         setSubmitting(false);
-        reset();
       })}>
         <div className="flex flex-col relative justify-center mt-14">
           <input id="name" className="p-1 rounded" type="text" name="name" />
@@ -53,7 +63,7 @@ const ApplyForm = () => {
           <label htmlFor="github" className="absolute p-1">Github (URL)</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="files" type="file" name="files"></input>
+          <input id="files" type="file" name="files" ></input>
           <label htmlFor="cv" className="absolute p-1">CV (PDF)</label>
         </div>
         <button type="submit" disabled={submitting} className="w-full lg:w-3/5 h-10 relative rounded group overflow-hidden font-medium border-2 border-ycc-pink text-ycc-pink inline-block mt-14 hover:underline hover:text-white">

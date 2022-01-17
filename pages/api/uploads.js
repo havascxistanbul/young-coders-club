@@ -24,10 +24,6 @@ const middleware = upload.single('files');
 apiRoute.use(middleware);
 
 apiRoute.post((req, res) => {
-
-  console.log(req.body)
-  console.log(req.file)
-  console.log(req.file.filename)
   sendEmail(req.body, req.file.filename)
 
   res.status(200).json({ data: 'success' });
@@ -43,7 +39,6 @@ export const config = {
 
 
 function sendEmail(body, filename) {
-
   const client = new SMTPClient({
     user: process.env.mail,
     password: process.env.password,
