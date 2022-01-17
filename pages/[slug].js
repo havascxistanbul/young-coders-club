@@ -48,15 +48,16 @@ export async function getStaticProps({ params }) {
     slug: items[0].fields.slug,
   }
 
+  const res = await client.getEntries({ content_type: 'faq' });
+  const faq = res.items;
   const { slug } = params;
   return {
-    props: { content }
+    props: { content, faq },
   }
 }
 
 
 export default function Page(props) {
-
   return (
     <>
       <Head>
@@ -67,7 +68,7 @@ export default function Page(props) {
         <HeroSwiper {...props.content.components[0].images} />
         <Inpage {...props.content.components[1]} />
         {props.content.slug === 'apply-now' && <ApplyForm />}
-        {props.content.slug === 'faq' && <Faq />}
+        {props.content.slug === 'faq' && <Faq {...props.faq} />}
       </main>
     </>
   )
