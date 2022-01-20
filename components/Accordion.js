@@ -6,7 +6,7 @@ const Faq = ({ title, content }) => {
   return (
     <div className="mb-4 border-ycc-pink border-solid rounded relative">
       <div className="flex justify-between bg-ycc-pink text-white p-4 border-ycc-pink border-solid border-b-2 hover:cursor-pointer" onClick={() => setIsActive(!isActive)}>
-        <div className="text-xl font-semibold">{title}</div>
+        <div className="text-l lg:text-xl font-semibold">{title}</div>
         <div className="">{!isActive ? '+' : '-'}</div>
       </div>
       <div className={!isActive ? "opacity-0 overflow-hidden w-3/4 h-0 text-xs transition-all duration-300" : "block p-6 opacity-100 w-full text-base transition-all duration-300 accordion-item__content"}>{content}</div>
