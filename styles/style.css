@@ -7,6 +7,16 @@
   src: url(../assets/fonts/Champion-HTF-Lightweight.otf);
 }
 
+::selection{
+  background-color: #eb0045;
+  color: white;
+}
+
+::-moz-selection{
+  background-color: #eb0045;
+  color: white;
+}
+
 .page__content > * {
   font-family: Klavika-Regular;
   margin-top: 10px;
