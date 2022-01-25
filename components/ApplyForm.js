@@ -47,23 +47,23 @@ const ApplyForm = () => {
         setSubmitting(false);
       })}>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="name" className="p-1 rounded" type="text" name="name" />
+          <input id="name" required className="p-1 rounded" type="text" name="name" />
           <label htmlFor="name" className="absolute p-1 flex">Name</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="surname" className="p-1 rounded" type="text" name="surname" />
+          <input id="surname" required className="p-1 rounded" type="text" name="surname" />
           <label htmlFor="surname" className="absolute p-1">Surname</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="email" className="p-1 rounded" type="email" name="email" />
+          <input id="email" required className="p-1 rounded" type="email" name="email" />
           <label htmlFor="email" className="absolute p-1">Email</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="github" className="p-1 rounded" type="text" name="github" />
+          <input id="github" required className="p-1 rounded" type="text" name="github" />
           <label htmlFor="github" className="absolute p-1">Github (URL)</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="files" type="file" name="files" ></input>
+          <input id="files" required type="file" name="files" ></input>
           <label htmlFor="cv" className="absolute p-1">CV (PDF)</label>
         </div>
         <button type="submit" disabled={submitting} className="w-full lg:w-3/5 h-10 relative rounded group overflow-hidden font-medium border-2 border-ycc-pink text-ycc-pink inline-block mt-14 hover:underline hover:text-white">
