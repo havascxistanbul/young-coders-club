@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ApplyForm = () => {
-  // const [name, setName] = useState('');
-  // const [surname, setSurname] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [github, setGithub] = useState('');
-  // const [cv, setCv] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const resetForm = () => {
     document.getElementById('form').reset();
@@ -33,11 +28,6 @@ const ApplyForm = () => {
         await axios.post('/api/uploads', formData, config).then(
           (res) => {
             alert('Form submitted');
-            // setName('');
-            // setSurname('');
-            // setEmail('');
-            // setGithub('');
-            // setCv('');
             resetForm();
           }
         ).catch(

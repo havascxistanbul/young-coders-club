@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useState } from 'react';
-// import NavigationLinks from './NavigationLinks';
 import UseAnimations from 'react-useanimations';
 import menu3 from 'react-useanimations/lib/menu3'
 import { useRouter } from 'next/router';
