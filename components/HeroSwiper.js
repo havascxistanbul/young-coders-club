@@ -1,13 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination, Navigation } from "swiper";
+import SwiperCore, { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import { nanoid } from 'nanoid';
 
-SwiperCore.use([Pagination, Navigation]);
+SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 const HeroSwiper = (props) => {
   const images = [];
@@ -26,7 +26,7 @@ const HeroSwiper = (props) => {
         }}
         loop={true}
         wrapperTag='ul'
-        autoplay
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
       >
         {images.map((image) => (
           <SwiperSlide tag='li' key={nanoid()}> <Image src={`https:${image.url}`} priority layout='responsive' width={1200} height={500} alt={image.fileName} /></SwiperSlide>
