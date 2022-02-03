@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+// import Confetti from '../components/Confetti';
+import ConfettiExplosion from 'react-confetti-explosion';
 
 const ApplyForm = () => {
   const [submitting, setSubmitting] = useState(false);
+  const [fire, setFire] = useState(false);
+
   const resetForm = () => {
     document.getElementById('form').reset();
   }
@@ -27,8 +31,8 @@ const ApplyForm = () => {
         };
         await axios.post('/api/uploads', formData, config).then(
           (res) => {
-            alert('Form submitted');
             resetForm();
+            setFire(true);
           }
         ).catch(
           (e) => console.log(e)
@@ -53,8 +57,13 @@ const ApplyForm = () => {
           <label htmlFor="github" className="absolute p-1">Github (URL)</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="files" required type="file" name="files" ></input>
+          <input id="files" required type="file" name="files" accept="application/pdf" ></input>
           <label htmlFor="cv" className="absolute p-1">CV (PDF)</label>
+        </div>
+        <div className="flex flex-col relative justify-center">
+          <div className="absolute left-1/2 lg:left-1/4 top-8">
+            {fire && <ConfettiExplosion />}
+          </div>
         </div>
         <button type="submit" disabled={submitting} className="w-full lg:w-3/5 h-10 relative rounded group overflow-hidden font-medium border-2 border-ycc-pink text-ycc-pink inline-block mt-14 hover:underline hover:text-white">
           <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-ycc-pink group-hover:h-full"></span>

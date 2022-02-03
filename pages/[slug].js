@@ -63,7 +63,7 @@ export default function Page(props) {
       <Head>
         <title>{`YCC | ${props.content.name}`}</title>
       </Head>
-      <main className='container mx-auto'>
+      <main className='container mx-auto overflow-hidden'>
         <Header />
         <HeroSwiper {...props.content.components[0].images} />
         <Inpage {...props.content.components[1]} />
