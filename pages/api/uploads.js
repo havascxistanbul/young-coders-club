@@ -56,7 +56,7 @@ function sendEmail(body, filename) {
         {
           data: `<html>
           <div>Email => <a href="mailto:${body.email}">${body.email}</a>,</div><br>
-          <div>Github => <a href="${body.github}" target=_blank>${body.name} ${body.surname}</a></div>
+          <div>Github => <a href="${body.github}" target=_blank>${body.github}</a></div>
         </html>`, alternative: true
         },
         { path: `public/uploads/${filename}`, type: 'application/pdf', name: `${body.name}${body.surname}.pdf` },
