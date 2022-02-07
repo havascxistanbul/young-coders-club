@@ -13,29 +13,29 @@ const client = createClient({
   accessToken: process.env.CF_ACCESS_TOKEN,
 })
 
-export const getStaticPaths = async () => {
-  const res = await client.getEntries({
-    content_type: 'page'
-  })
+// export const getStaticPaths = async () => {
+//   const res = await client.getEntries({
+//     content_type: 'page'
+//   })
 
-  const paths = res.items.map(item => {
-    return {
-      params: {
-        slug: item.fields.slug
-      }
-    }
-  })
+//   const paths = res.items.map(item => {
+//     return {
+//       params: {
+//         slug: item.fields.slug
+//       }
+//     }
+//   })
 
-  return {
-    paths,
-    fallback: false,
-  }
-}
+//   return {
+//     paths,
+//     fallback: false,
+//   }
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps(context) {
   const { items } = await client.getEntries({
     content_type: 'page',
-    'fields.slug': params.slug
+    'fields.slug': context.params.slug
   })
 
   const components = items[0].fields.components.map((component) => {
@@ -50,19 +50,24 @@ export async function getStaticProps({ params }) {
 
   const res = await client.getEntries({ content_type: 'faq' });
   const faq = res.items;
-  const { slug } = params;
+  const { slug } = context.params;
   return {
     props: { content, faq },
   }
 }
-
 
 export default function Page(props) {
   return (
     <>
       <Head>
         <title>{`YCC | ${props.content.name}`}</title>
+        <meta property="og:title" content={`YCC | ${props.content.name}`} key="title" />
+        <meta property="description" content="Want to work in our global IT projets? Join Young Coders Club for our free training session and kickstart your career!" />
+        <meta property="og:description" content="Want to work in our global IT projets? Join Young Coders Club for our free training session and kickstart your career!" key="description" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <meta property="og:image" key="og_image" content="/favicon.png" />
       </Head>
+
       <main className='container mx-auto overflow-hidden'>
         <Header />
         <HeroSwiper {...props.content.components[0].images} />
