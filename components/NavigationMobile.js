@@ -23,13 +23,7 @@ const NavigationMobile = () => {
         show
           ? 'w-4/5 mx-auto flex justify-center items-center h-16 nav-bar__items nav-bar__items--active'
           : 'w-4/5 mx-auto flex justify-center items-center h-16 nav-bar__items'}>
-        <li className='text-m nav-bar__item'>
-          <a href="/home" className={classNames(
-            router.asPath === '/home'
-              ? 'nav-bar__item__link nav-bar__item__link--active'
-              : 'nav-bar__item__link'
-          )}>HOME</a>
-        </li>
+
         <li className='text-m mt-8 nav-bar__item'>
           <a href="/about" className={classNames(
             router.asPath === '/about'

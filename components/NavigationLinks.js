@@ -8,15 +8,6 @@ const NavigationLinks = () => {
   return (
     <ul className='mx-auto flex justify-center items-center h-16 nav-bar__items'>
       <li className='text-m mr-16 nav-bar__item'>
-        <Link href={'/home'}>
-          <a className={classNames(
-            router.asPath === '/home'
-              ? 'nav-bar__item__link nav-bar__item__link--active'
-              : 'nav-bar__item__link'
-          )}>HOME</a>
-        </Link>
-      </li>
-      <li className='text-m mr-16 nav-bar__item'>
         <Link href={'/about'}>
           <a className={classNames(
             router.asPath === '/about'
