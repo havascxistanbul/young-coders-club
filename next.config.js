@@ -7,7 +7,12 @@ module.exports = {
     return [
       {
         source: '/',
-        destination: '/home',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/home',
+        destination: '/about',
         permanent: true,
       },
     ]
