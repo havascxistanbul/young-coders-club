@@ -9,6 +9,7 @@ import Inpage from '../components/Inpage';
 import ApplyForm from '../components/ApplyForm';
 import Faq from '../components/Faq';
 import LoginViaLinkedin from '../components/LoginViaLinkedin';
+import Brands from '../components/Brands';
 
 // Contentful
 import { createClient } from 'contentful'
@@ -34,12 +35,17 @@ export async function getServerSideProps(context) {
     components,
     slug: items[0].fields.slug,
   }
+  // Get FAQ Accordion Items
+  const resFaq = await client.getEntries({ content_type: 'faq' });
+  const faq = resFaq.items;
 
-  const res = await client.getEntries({ content_type: 'faq' });
-  const faq = res.items;
+  // Get Timing & Process Accordion Items
+  const resTimingAndProcess = await client.getEntries({ content_type: 'courseContent' });
+  const timingAndProcess = resTimingAndProcess.items;
+
   const { slug } = context.params;
   return {
-    props: { content, faq },
+    props: { content, faq, timingAndProcess },
   }
 }
 
@@ -59,8 +65,12 @@ export default function Page(props) {
         <Header />
         <HeroSwiper {...props.content.components[0].images} />
         <Inpage {...props.content.components[1]} />
-        {props.content.slug === 'apply-now' && <LoginViaLinkedin />}
+        {/* {props.content.slug === 'apply-now' && <LoginViaLinkedin />} */}
         {props.content.slug === 'faq' && <Faq {...props.faq} />}
+        {props.content.slug === 'about' && <Brands />}
+        {props.content.slug === 'timing-and-process' && <Faq {...props.timingAndProcess} />}
+
+
         {/* {props.content.slug === 'apply-now-user-auth' && <ApplyForm />} */}
       </main>
     </>
