@@ -8,7 +8,8 @@ module.exports = {
       colors: {
         'ycc-pink': '#eb0045',
         'ycc-blue': '#63cfe3',
-        'ycc-pink-soft': '#ff8189'
+        'ycc-pink-soft': '#ff8189',
+        'linkedin-blue': '#0072B1',
       },
     },
 

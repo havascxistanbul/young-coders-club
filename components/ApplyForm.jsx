@@ -3,7 +3,7 @@ import axios from 'axios';
 // import Confetti from '../components/Confetti';
 import ConfettiExplosion from 'react-confetti-explosion';
 
-const ApplyForm = () => {
+const ApplyForm = (props) => {
   const [submitting, setSubmitting] = useState(false);
   const [fire, setFire] = useState(false);
 
@@ -25,12 +25,15 @@ const ApplyForm = () => {
         formData.append("email", e.target.email.value);
         formData.append("github", e.target.github.value);
         formData.append("files", e.target.files.files[0]);
-
+        console.log(formData);
+       
         const config = {
           headers: { 'content-type': 'multipart/form-data;' },
         };
         await axios.post('/api/uploads', formData, config).then(
           (res) => {
+            document.getElementById('name').value = '';
+            document.getElementById('surname').value = '';
             resetForm();
             setFire(true);
           }
@@ -41,11 +44,11 @@ const ApplyForm = () => {
         setSubmitting(false);
       })}>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="name" required className="p-1 rounded" type="text" name="name" />
+          <input id="name" required disabled className="p-1 rounded" type="text" name="name" value={props.name} />
           <label htmlFor="name" className="absolute p-1 flex">Name</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
-          <input id="surname" required className="p-1 rounded" type="text" name="surname" />
+          <input id="surname" required disabled className="p-1 rounded" type="text" name="surname" value={props.lastName} />
           <label htmlFor="surname" className="absolute p-1">Surname</label>
         </div>
         <div className="flex flex-col relative justify-center mt-14">
