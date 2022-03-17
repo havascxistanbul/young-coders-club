@@ -10,6 +10,7 @@ module.exports = {
         'ycc-blue': '#63cfe3',
         'ycc-pink-soft': '#ff8189',
         'linkedin-blue': '#0072B1',
+        'text-gray': '#58595b',
       },
     },
 
