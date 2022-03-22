@@ -7,6 +7,10 @@
   src: url(../assets/fonts/Champion-HTF-Lightweight.otf);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ::selection{
   background-color: #eb0045;
   color: white;

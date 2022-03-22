@@ -4,7 +4,7 @@ const TimingAndProcessAccordion = ({ title, content }) => {
   const [isActive, setIsActive] = useState(false);
   return (
     <div className="border-ycc-pink border-solid rounded relative mb-2">
-      <div className="flex items-center bg-white text-text-gray hover:cursor-pointer" onClick={() => setIsActive(!isActive)}>
+      <div className="flex w-fit items-center bg-white text-text-gray hover:cursor-pointer" onClick={() => setIsActive(!isActive)}>
         <div className="text-ycc-pink rounded-full text-xl font-light mr-4">{!isActive ? '+' : '-'}</div>
         <div className="text-l lg:text-l font-semibold">{title}</div>
       </div>

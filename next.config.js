@@ -6,13 +6,13 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/about',
+        source: '/about',
+        destination: '/home',
         permanent: true,
       },
       {
-        source: '/home',
-        destination: '/about',
+        source: '/',
+        destination: '/home',
         permanent: true,
       },
     ]

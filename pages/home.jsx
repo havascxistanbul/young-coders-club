@@ -6,9 +6,8 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import HeroSwiper from '../components/HeroSwiper';
 import Inpage from '../components/Inpage';
-import ApplyForm from '../components/ApplyForm';
 import Faq from '../components/Faq';
-import LoginViaLinkedin from '../components/LoginViaLinkedin';
+import TechStack from '../components/TechStack'
 import Brands from '../components/Brands';
 
 // Contentful
@@ -23,17 +22,10 @@ const client = createClient({
 export async function getServerSideProps(context) {
   const { items } = await client.getEntries({
     content_type: 'page',
-    'fields.slug': context.params.slug
   })
-
-  const components = items[0].fields.components.map((component) => {
-    return component.fields
-  })
-
+  const components = items[0].fields.components;
   const content = {
-    name: items[0].fields.name,
     components,
-    slug: items[0].fields.slug,
   }
   // Get FAQ Accordion Items
   const resFaq = await client.getEntries({ content_type: 'faq' });
@@ -43,35 +35,48 @@ export async function getServerSideProps(context) {
   const resTimingAndProcess = await client.getEntries({ content_type: 'courseContent' });
   const timingAndProcess = resTimingAndProcess.items;
 
-  const { slug } = context.params;
+  // const { slug } = context.params;
   return {
     props: { content, faq, timingAndProcess },
   }
 }
 
 export default function Page(props) {
+  const components = props.content.components;
+  const slider = components.filter((item) => item.sys.contentType.sys.id === 'slider');
+  const inpageContent = components.filter((item) => item.sys.contentType.sys.id === 'inpageContent');
+
+  console.log(props)
   return (
     <>
       <Head>
-        <title>{`YCC | ${props.content.name}`}</title>
-        <meta property="og:title" content={`YCC | ${props.content.name}`} key="title" />
+        <title>Young Coders Club</title>
+        <meta property="og:title" content='Young Coders Club' key="title" />
         <meta property="description" content="Want to work in our global IT projets? Join Young Coders Club for our free training session and kickstart your career!" />
         <meta property="og:description" content="Want to work in our global IT projets? Join Young Coders Club for our free training session and kickstart your career!" key="description" />
         <link rel="shortcut icon" href="/favicon.png" />
         <meta property="og:image" key="og_image" content="/favicon.png" />
       </Head>
-
-      <main className='container mx-auto overflow-hidden'>
+{/* 
+    //   <main className='container mx-auto overflow-hidden'>
+    //     <Header />
+    //     <HeroSwiper {...props.content.components[0].images} />
+    //     {props.content.slug === 'faq' && <Faq {...props.faq} />}
+    //     {props.content.slug === 'about' && <Brands />}
+    //     {props.content.slug === 'timing-and-process' && <Faq {...props.timingAndProcess} />}
+    //   </main> */}
+      <main>
         <Header />
-        <HeroSwiper {...props.content.components[0].images} />
-        <Inpage {...props.content.components[1]} />
-        {/* {props.content.slug === 'apply-now' && <LoginViaLinkedin />} */}
-        {props.content.slug === 'faq' && <Faq {...props.faq} />}
-        {props.content.slug === 'about' && <Brands />}
-        {props.content.slug === 'timing-and-process' && <Faq {...props.timingAndProcess} />}
+        <HeroSwiper {...slider[0].fields.images} />
+        {inpageContent.map((item) => (
+          <div key={item.fields.name}>
+            <Inpage {...item.fields} />
+            {item.fields.componentId === 'faq' && <Faq {...props.faq} />}
+            {item.fields.componentId === 'timing-and-process' && <TechStack {...props.timingAndProcess} />}
+            {item.fields.componentId === 'about' && <Brands />}
 
-
-        {/* {props.content.slug === 'apply-now-user-auth' && <ApplyForm />} */}
+          </div>
+        ))}
       </main>
     </>
   )

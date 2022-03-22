@@ -8,36 +8,36 @@ const NavigationLinks = () => {
   return (
     <ul className='mx-auto flex justify-center items-center h-16 nav-bar__items'>
       <li className='text-m mr-16 nav-bar__item'>
-        <Link href={'/about'}>
+        <Link href={'/home#about'}>
           <a className={classNames(
-            router.asPath === '/about'
+            router.asPath === '/home#about'
               ? 'nav-bar__item__link nav-bar__item__link--active'
               : 'nav-bar__item__link'
           )}>ABOUT</a>
         </Link>
       </li>
       <li className='text-m mr-16 nav-bar__item'>
-        <Link href={'/timing-and-process'}>
+        <Link href={'/home#timing-and-process'}>
           <a className={classNames(
-            router.asPath === '/timing-and-process'
+            router.asPath === '/home#timing-and-process'
               ? 'nav-bar__item__link nav-bar__item__link--active'
               : 'nav-bar__item__link'
           )}>TIMING & PROCESS</a>
         </Link>
       </li>
       <li className='text-m mr-16 nav-bar__item'>
-        <Link href={'/apply-now'}>
+        <Link href={'#apply-now'}>
           <a className={classNames(
-            router.asPath === '/apply-now'
+            router.asPath === '#apply-now'
               ? 'nav-bar__item__link nav-bar__item__link--active'
               : 'nav-bar__item__link'
           )}>APPLY NOW</a>
         </Link>
       </li>
       <li className='text-m mr-16 nav-bar__item'>
-        <Link href={'/faq'}>
+        <Link href={'#faq'}>
           <a className={classNames(
-            router.asPath === '/faq'
+            router.asPath === '#faq'
               ? 'nav-bar__item__link nav-bar__item__link--active'
               : 'nav-bar__item__link'
           )}>FAQ</a>
