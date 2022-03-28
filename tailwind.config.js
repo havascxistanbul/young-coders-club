@@ -11,6 +11,7 @@ module.exports = {
         'ycc-pink-soft': '#ff8189',
         'linkedin-blue': '#0072B1',
         'text-gray': '#58595b',
+        'ycc-green': '#58baa8'
       },
     },
 
