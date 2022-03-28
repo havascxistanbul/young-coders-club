@@ -53,6 +53,7 @@ export default function Page(props) {
       text: '',
       url: '#'
     },
+    id: '',
   });
 
   const [inpageContent, setInpageContent] = useState([]);
@@ -65,12 +66,14 @@ export default function Page(props) {
 
     const heroBannerCtaID = heroBanner.fields.cta.sys.id;
     const heroBannerImage = heroBanner.fields.image.fields.file;
+    const componentId = heroBanner.fields.componentId;
 
     client.getEntry(heroBannerCtaID)
       .then((entry) => {
         setHeroBannerItems({
           image: heroBannerImage,
-          cta: entry.fields
+          cta: entry.fields,
+          id: componentId
         })
       })
       .catch(console.error)
