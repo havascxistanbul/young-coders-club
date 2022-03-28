@@ -32,19 +32,20 @@ const NavigationMobile = () => {
           )}>ABOUT</a>
         </li>
         <li className='text-m mt-8 nav-bar__item'>
+          <a href="#supporters" className={classNames(
+            router.asPath === '/supporters'
+              ? 'nav-bar__item__link nav-bar__item__link--active'
+              : 'nav-bar__item__link'
+          )}>SUPPORTERS</a>
+        </li>
+        <li className='text-m mt-8 nav-bar__item'>
           <a href="#timing-and-process" className={classNames(
             router.asPath === '/timing-and-process'
               ? 'nav-bar__item__link nav-bar__item__link--active'
               : 'nav-bar__item__link'
           )}>TIMING & PROCESS</a>
         </li>
-        <li className='text-m mt-8 nav-bar__item'>
-          <a href="#apply-now" className={classNames(
-            router.asPath === '/apply-now'
-              ? 'nav-bar__item__link nav-bar__item__link--active'
-              : 'nav-bar__item__link'
-          )}>APPLY NOW</a>
-        </li>
+        
         <li className='text-m mt-8 nav-bar__item'>
           <a href="#faq" className={classNames(
             router.asPath === '/faq'

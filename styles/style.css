@@ -20,11 +20,18 @@ html {
   background-color: #eb0045;
   color: white;
 }
+.cta {
+  font-family: Champion-HTF-Lightweight;
+}
 
 .page__content > * {
   font-family: Klavika-Regular;
   margin-top: 10px;
   color: #58595b;
+}
+
+.page__content--alternative > * {
+  color: white;
 }
 
 .page__content > p{
@@ -34,27 +41,18 @@ html {
 .page__content > ul > li {
   display: flex;
   margin-top: 20px;
-  align-items: center;
+  align-items: flex-start;
 }
-
 
 .page__content > ul > li::before {
   content: '';
-  color: white;
-  text-align: center;
   width: 20px;
   height: 20px;
-  background-image: url('../public/plus-svgrepo-com.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #63cfe3;
-  border: 1px solid #63cfe3;
+  background-color: #58baa8;
+  border: 1px solid #58baa8;
   border-radius: 100%;
   margin-right: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px
+  min-width: 20px;
   }
 
 .page__content > hr {
@@ -63,8 +61,22 @@ html {
 }
 
 .page__content > h1, .page__content > h2, .page__content > h3, .page__content > h4  {
-  color: #58595b;
+  color: #58baa8;
   font-family: Champion-HTF-Lightweight;
+  margin-top: 40px;
+}
+
+.nums {
+  font-family: Champion-HTF-Lightweight;
+
+}
+
+@media screen and (max-width: 1024px) {
+  .page__content > h1, .page__content > h2, .page__content > h3, .page__content > h4  {
+  color: #58baa8;
+  font-family: Champion-HTF-Lightweight;
+  margin-top: 20px;
+}
 }
 
 .page__content > h1{
@@ -94,7 +106,12 @@ html {
 
 .page__header{
   font-family: Champion-HTF-Lightweight;
-  color: #58595b;
+  color: #eb0045;
+}
+
+.page__header--alternative{
+  font-family: Champion-HTF-Lightweight;
+  color: white;
 }
 
 .page__content > blockquote {

@@ -17,6 +17,15 @@ const NavigationLinks = () => {
         </Link>
       </li>
       <li className='text-m mr-16 nav-bar__item'>
+        <Link href={'/home#supporters'}>
+          <a className={classNames(
+            router.asPath === '/home#supporters'
+              ? 'nav-bar__item__link nav-bar__item__link--active'
+              : 'nav-bar__item__link'
+          )}>SUPPORTERS</a>
+        </Link>
+      </li>
+      <li className='text-m mr-16 nav-bar__item'>
         <Link href={'/home#timing-and-process'}>
           <a className={classNames(
             router.asPath === '/home#timing-and-process'

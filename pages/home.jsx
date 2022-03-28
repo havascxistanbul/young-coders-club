@@ -1,32 +1,34 @@
 //Default
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Head from 'next/head';
 
 // Components
 import Header from '../components/Header';
-import HeroSwiper from '../components/HeroSwiper';
+import HeroBanner from '../components/HeroBanner';
 import Inpage from '../components/Inpage';
 import Faq from '../components/Faq';
-import TechStack from '../components/TechStack'
-import Brands from '../components/Brands';
+import InpageWithBg from '../components/InpageWithBg';
+import TimingAndProcss from '../components/TimingAndProcess'
 
 // Contentful
 import { createClient } from 'contentful'
 
 
 const client = createClient({
-  space: process.env.CF_SPACE_ID,
-  accessToken: process.env.CF_ACCESS_TOKEN,
+  space: process.env.CF_SPACE_ID || process.env.NEXT_PUBLIC_CF_SPACE_ID,
+  accessToken: process.env.CF_ACCESS_TOKEN || process.env.NEXT_PUBLIC_CF_ACCESS_TOKEN,
 })
 
 export async function getServerSideProps(context) {
   const { items } = await client.getEntries({
     content_type: 'page',
   })
+
   const components = items[0].fields.components;
   const content = {
     components,
   }
+
   // Get FAQ Accordion Items
   const resFaq = await client.getEntries({ content_type: 'faq' });
   const faq = resFaq.items;
@@ -42,11 +44,38 @@ export async function getServerSideProps(context) {
 }
 
 export default function Page(props) {
-  const components = props.content.components;
-  const slider = components.filter((item) => item.sys.contentType.sys.id === 'slider');
-  const inpageContent = components.filter((item) => item.sys.contentType.sys.id === 'inpageContent');
+  const [heroBannerItems, setHeroBannerItems] = useState({
+    image: {
+      fileName: '',
+      url: '',
+    },
+    cta: {
+      text: '',
+      url: '#'
+    },
+  });
 
-  console.log(props)
+  const [inpageContent, setInpageContent] = useState([]);
+
+  useEffect(() => {
+    const components = props.content.components;
+    const heroBanner = components.filter((item) => item.sys.contentType.sys.id === 'heroBanner')[0];
+
+    setInpageContent(components.filter((item) => item.sys.contentType.sys.id === 'inpageContent'));
+
+    const heroBannerCtaID = heroBanner.fields.cta.sys.id;
+    const heroBannerImage = heroBanner.fields.image.fields.file;
+
+    client.getEntry(heroBannerCtaID)
+      .then((entry) => {
+        setHeroBannerItems({
+          image: heroBannerImage,
+          cta: entry.fields
+        })
+      })
+      .catch(console.error)
+  }, [props, setHeroBannerItems, setInpageContent])
+
   return (
     <>
       <Head>
@@ -57,24 +86,14 @@ export default function Page(props) {
         <link rel="shortcut icon" href="/favicon.png" />
         <meta property="og:image" key="og_image" content="/favicon.png" />
       </Head>
-{/* 
-    //   <main className='container mx-auto overflow-hidden'>
-    //     <Header />
-    //     <HeroSwiper {...props.content.components[0].images} />
-    //     {props.content.slug === 'faq' && <Faq {...props.faq} />}
-    //     {props.content.slug === 'about' && <Brands />}
-    //     {props.content.slug === 'timing-and-process' && <Faq {...props.timingAndProcess} />}
-    //   </main> */}
       <main>
         <Header />
-        <HeroSwiper {...slider[0].fields.images} />
+        <HeroBanner {...heroBannerItems} />
         {inpageContent.map((item) => (
           <div key={item.fields.name}>
-            <Inpage {...item.fields} />
+            {item.fields.componentId === 'supporters'? <InpageWithBg {...item.fields} /> : <Inpage {...item.fields} />}
             {item.fields.componentId === 'faq' && <Faq {...props.faq} />}
-            {item.fields.componentId === 'timing-and-process' && <TechStack {...props.timingAndProcess} />}
-            {item.fields.componentId === 'about' && <Brands />}
-
+            {item.fields.componentId === 'timing-and-process' && <TimingAndProcss {...props.faq} />}
           </div>
         ))}
       </main>
