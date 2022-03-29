@@ -77,6 +77,12 @@ html {
   font-family: Champion-HTF-Lightweight;
   margin-top: 20px;
 }
+
+ .page__content--timing-and-process > h1, .page__content > h2, .page__content > h3, .page__content > h4  {
+  color: #58baa8;
+  font-family: Champion-HTF-Lightweight;
+  margin-top: 0;
+}
 }
 
 .page__content > h1{
