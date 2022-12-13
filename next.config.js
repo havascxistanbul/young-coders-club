@@ -3,6 +3,7 @@ module.exports = {
   images: {
     domains: ['images.ctfassets.net', 'picsum.photos'],
   },
+  output: "standalone",
   async redirects() {
     return [
       {
