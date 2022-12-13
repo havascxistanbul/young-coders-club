@@ -21,7 +21,7 @@ const TimingAndProcess = () => {
             </div>
             <div className="page__content page__content--timing-and-process">
                 <h4 className="mt-0 lg:mt-5">TEST</h4>
-                <p>Send us your GitHub link and LinkedIn profile via Apply Now section.</p>
+                <p>After your application, we will send you test and ask you to complete it the given time.</p>
             </div>
           </div>
           <div className="flex flex-row items-start lg:flex-col">
@@ -30,7 +30,7 @@ const TimingAndProcess = () => {
             </div>
             <div className="page__content page__content--timing-and-process">
                 <h4 className="mt-0 lg:mt-5">INTERVIEW</h4>
-                <p>Send us your GitHub link and LinkedIn profile via Apply Now section.</p>
+                <p>We will conduct an online interview with the students who completed their test with successs and the will start our education program with the students who passed the interview.</p>
             </div>
           </div>
         </div>
