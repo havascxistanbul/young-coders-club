@@ -20,6 +20,11 @@ html {
   background-color: #eb0045;
   color: white;
 }
+
+.header {
+  height: 80px;
+}
+
 .cta {
   font-family: Champion-HTF-Lightweight;
 }
@@ -185,12 +190,6 @@ html {
   max-width: 200px;
 }
 
-.header__logo__self {
-  object-fit: contain;
-  width: 100% !important;
-  position: relative !important;
-  height: unset !important;
-}
 
 .accordion-item__content > * {
   font-family: Klavika-Regular;
