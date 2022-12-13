@@ -11,7 +11,7 @@ const TimingAndProcess = () => {
             </div>
             <div className="page__content page__content--timing-and-process">
                 <h4 className="mt-0 lg:mt-5">APPLY</h4>
-                <p>Send us your GitHub link and LinkedIn profile via Apply Now section.</p>
+                <p>Send us your GitHub link and LinkedIn profile via <a href="/home#apply-now">Apply Now</a> section.</p>
             </div>
           </div>
           <div className="flex flex-row items-start lg:flex-col">
