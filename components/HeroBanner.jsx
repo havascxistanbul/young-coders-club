@@ -25,7 +25,7 @@ const HeroSwiper = (props) => {
         height={500}
       />
       <a
-        className="cta absolute z-10 bottom-12 left-12 border-2 border-white p-2 lg:p-4 bg-white text-black uppercase"
+        className="cta absolute z-10 lg:bottom-12 left-5 bottom-2  lg:left-20 border-2 border-white p-2 lg:p-4 bg-white text-black uppercase"
         href={ctaHref}
         target="_blank"
         rel="noreferrer"

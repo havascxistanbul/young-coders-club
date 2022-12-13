@@ -273,7 +273,7 @@ input[type="text"]:focus, input[type="file"]:focus, input[type="email"]:focus{
     position: sticky;
     top: 0;
   }
-  
+
   .nav-bar--mobile{
     display: flex;
     align-items: center;
