@@ -6,7 +6,7 @@ import Image from "next/image";
 const Header = () => {
   return (
     <div className="header flex justify-center z-30 w-screen fixed bg-white">
-      <div className="header__logo absolute top-0 left-0">
+      <div className="header__logo absolute top-0 left-0 w-[82px] h-[82px] lg:w-full lg:h-full">
         <Image src="/logo.jpg" alt="YCC Logo" width="130" height="80" />
       </div>
       <div className="nav-bar lg:relative left-20 static flex items-center">
