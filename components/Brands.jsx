@@ -28,7 +28,7 @@ const Brands = () => {
           className="w-full"
         >
           <Image
-            src="/brands/ph.png"
+            src="/brands/ph-logo.png"
             className="w-full"
             alt="Project House"
             width="130"
