@@ -102,6 +102,7 @@ export default function Page(props) {
           content="Want to work in our global IT projets? Join Young Coders Club for our free training session and kickstart your career!"
           key="description"
         />
+        <meta name="google-site-verification" content="Azk4C6n-oUu2Rt0AafV6vzdGJrddKrYKkuqlcjAivSc" />
         <link rel="shortcut icon" href="/favicon.png" />
         <meta property="og:image" key="og_image" content="/favicon.png" />
       </Head>
